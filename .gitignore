@@ -111,3 +111,7 @@ media/
 **/migrations/**
 !**/migrations
 !**/migrations/__init__.py
+
+.idea/
+node_modules/
+/YLYL/game/static/bundles/
