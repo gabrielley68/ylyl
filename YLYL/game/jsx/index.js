@@ -1,11 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Counter from './Components/Counter';
 
-function Welcome(props){
-    return <h1>Hello, {props.name}</h1>;
+function Game(props){
+    return <Counter name="Gabriel"/>;
 }
 
-const element = <Welcome name="Gab" />;
+const element = <Game/>;
 ReactDOM.render(
     element,
     document.getElementById('react')
