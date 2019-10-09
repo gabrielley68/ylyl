@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>YLYL - {% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}">
+    <script defer src="{% static 'js/fontawesome/all.js' %}"></script>
+</head>
+<body>
+
+{% if user.is_authenticated is False %}
+    <section class="hero is-primary">
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+                    <div class="navbar-menu">
+                        <a class="navbar-end">
+                            <a href="{% url 'login' %}" class="navbar-item">
+                                Login
+                            </a>
+                            <a href="{% url 'register' %}" class="navbar-item">
+                                Register
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    YLYL
+                </h1>
+                <h2 class="subtitle">
+                    Powered by Django & React
+                </h2>
+                <a class="button" target="_blank" href="https://github.com/gabrielley68/ylyl">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Check the repo !</span>
+                </a>
+            </div>
+        </div>
+    </section>
+{% else %}
+    <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item">
+                YLYL
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item" style="padding-right: 0">
+                    <span>{{ user.username }} | </span>
+                </div>
+                <div class="navbar-item" style="padding-left: 2px">
+                    <a href="{% url 'logout' %}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+{% endif %}
+
+<section class="section">
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</section>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="notification {% if message.tags %} {{ message.extra_tags }} {% endif %}">
+            <button class="delete"></button>
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+<script src="{% static 'js/bulma/custom.js' %}"></script>
+</body>
+</html>

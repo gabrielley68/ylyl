@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Counter from './Components/Counter';
+import App from './Components/App';
 
-function Game(props){
-    return <Counter name="Gabriel"/>;
-}
 
-const element = <Game/>;
+const element = <App/>;
+
 ReactDOM.render(
     element,
     document.getElementById('react')

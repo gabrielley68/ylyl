@@ -9,7 +9,7 @@ module.exports = {
     entry: './YLYL/game/jsx/index',
 
     output: {
-        path: path.resolve('./YLYL/game/static/bundles/'),
+        path: path.resolve('./YLYL/static/js/bundles/'),
         filename: "[name]-[hash].js",
     },
 
