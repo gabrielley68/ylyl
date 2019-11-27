@@ -1,1 +1,1 @@
-web: gunicorn YLYL.wsgi.application
+web: cd YLYL && gunicorn YLYL.wsgi
