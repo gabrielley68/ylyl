@@ -1,1 +1,1 @@
-web: gunicorn YLYL.wsgi
+web: gunicorn YLYL.wsgi.application

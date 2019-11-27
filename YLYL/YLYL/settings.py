@@ -142,6 +142,8 @@ WEBPACK_LOADER = {
     }
 }
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 LOGIN_REDIRECT_URL = '/game/'
 LOGOUT_REDIRECT_URL = '/login/'
 
