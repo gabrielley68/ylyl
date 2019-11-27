@@ -1,0 +1,1 @@
+web: cd YLYL && gunicorn YLYL.wsgi --log-file -
