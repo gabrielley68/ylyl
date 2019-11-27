@@ -1,0 +1,36 @@
+{% csrf_token %}
+{% for field in form %}
+<!-- Make a switch with form type -->
+{% if field.is_hidden %}
+    <input type="hidden"
+           name="{{ field.html_name }}"
+           value="{{ field.value }}"
+    />
+{% else %}
+<div class="field">
+    <label for="{{ field.id_for_label }}" class="label">{{ field.label }}</label>
+    <div class="control">
+        <input class="input {% if field.errors %}is-danger{% endif %}"
+            type="{{ field.field.widget.input_type }}"
+            name="{{ field.html_name }}"
+            id="{{ field.field.auto_id }}"
+            value="{{ field.value|default:'' }}"
+        />
+    </div>
+    {% if field.help_text %}<div class="help">{{ field.help_text|safe }}</div>{% endif %}
+    {% if field.errors %}
+    <p class="help is-danger">
+        {% for error in field.errors %}
+            {{ error|safe }}
+        {% endfor %}
+    </p>
+    {% endif %}
+</div>
+{% endif %}
+{% endfor %}
+
+{% if form.non_field_errors %}
+    <div class="notification is-danger">
+        {{ form.non_field_errors }}
+    </div>
+{% endif %}

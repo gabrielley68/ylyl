@@ -6,10 +6,11 @@ var { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     context: __dirname,
 
-    entry: './YLYL/game/jsx/index',
+    entry: ['@babel/polyfill', './YLYL/game/jsx/index'],
 
     output: {
         path: path.resolve('./YLYL/static/js/bundles/'),
+        publicPath: '/static/js/bundles/',
         filename: "[name]-[hash].js",
     },
 

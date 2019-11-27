@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'common.apps.CommonConfig',
     'game.apps.GameConfig',
     'registration.apps.RegistrationConfig',
 
@@ -134,10 +135,10 @@ STATICFILES_DIRS = [
 
 WEBPACK_LOADER = {
     'DEFAULT': {
-        'BUNDLE_DIR_NAME': 'bundles/',
+        'BUNDLE_DIR_NAME': 'js/bundles/',
         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
     }
 }
 
-LOGIN_REDIRECT_URL = '/game/test/'
+LOGIN_REDIRECT_URL = '/game/'
 LOGOUT_REDIRECT_URL = '/login/'
