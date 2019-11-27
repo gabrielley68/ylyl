@@ -1,1 +1,1 @@
-web: cd YLYL && gunicorn YLYL.wsgi
+web: cd YLYL && gunicorn YLYL.wsgi --log-file -
