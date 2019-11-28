@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import * as faceapi from 'face-api.js';
 
+import Chat from "./Chat";
+
 const MIN_CONFIDENCE = 0.05;
 
 function Room(props){
-    const [loading, setLoading] = useState(false);
-    const [status, setStatus] = useState("Loading...");
+    const [status, setStatus] = useState("Connecting...");
     const faceDetector = faceapi.nets.tinyFaceDetector;
 
     useEffect(() => {
@@ -34,6 +35,10 @@ function Room(props){
                     .withFaceLandmarks()
                     .withFaceExpressions();
 
+                if(!detection){
+                    return;
+                }
+
                 const expr = detection instanceof faceapi.FaceExpressions ? detection : faceapi.isWithFaceExpressions(detection) ? detection.expressions : undefined;
 
                 if(!expr){
@@ -47,21 +52,21 @@ function Room(props){
         });
     }, []);
 
-
-
     return (
         <div>
-            <h3 className="title">{`Room ${props.roomId}`}</h3>
-            {loading &&
-            <div className={"loader-wrapper " + loading ? "is-active" : ""}>
-                <div className="loader is-loading"></div>
-            </div>
-            }
-            <h5>
-                <span id="status">{status}</span>
-            </h5>
-            <div>
-                <video id="inputVideo" muted autoPlay></video>
+            <h3 className="title is-h3 has-text-centered">{`Room ${props.roomId}`}</h3>
+            <div className="columns">
+                <div className="column is-one-third">
+                    <h5>
+                        <span id="status">{status}</span>
+                    </h5>
+                    <div>
+                        <video id="inputVideo" muted autoPlay></video>
+                    </div>
+                </div>
+                <div className="column">
+                    <Chat roomId={props.roomId}/>
+                </div>
             </div>
         </div>
     );

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'webpack_loader',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -76,6 +77,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'YLYL.wsgi.application'
+
+ASGI_APPLICATION = "YLYL.routing.application"
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [os.environ.get('REDIS_URL', ('127.0.0.1', 6379))]
+        },
+    },
+}
 
 
 # Database

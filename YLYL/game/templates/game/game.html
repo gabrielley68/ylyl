@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load render_bundle from webpack_loader %}
+{% block title %}The game{% endblock %}
 {% block content %}
     <div id="react"></div>
 {% render_bundle 'main' %}

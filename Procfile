@@ -1,1 +1,1 @@
-web: cd YLYL && gunicorn YLYL.wsgi --log-file -
+web: cd YLYL && daphne -p 8001 YLYL.routing:application
