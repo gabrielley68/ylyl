@@ -1,1 +1,1 @@
-web: cd YLYL && daphne -p 8001 YLYL.routing:application
+web: cd YLYL && daphne YLYL.routing:application --port $PORT --bind 0.0.0.0
