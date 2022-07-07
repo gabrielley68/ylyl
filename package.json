@@ -34,7 +34,7 @@
     "@tensorflow/tfjs": "1.0.0",
     "bulma": "^0.7.5",
     "face-api.js": "^0.21.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
   }
